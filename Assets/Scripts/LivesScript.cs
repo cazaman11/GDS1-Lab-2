@@ -7,14 +7,17 @@ public class LivesScript : MonoBehaviour {
 
     public int lives = 3;
     int coinTotal; //Make this link to coin script
+    CoinManager coinManagerScript ;
     bool checkpointPassed = false; //Add checkpoint object to flag if passed
 	// Use this for initialization
 	void Start () {
-		
+        coinManagerScript = gameObject.GetComponent<CoinManager>();
+        coinTotal = coinManagerScript.coinTotal;
 	}
 	
 	// Update is called once per frame
 	void Update () {
+        coinTotal = coinManagerScript.coinTotal;
 		if(lives == 0)
         {
             GameOver();
@@ -52,5 +55,6 @@ public class LivesScript : MonoBehaviour {
     {
         SceneManager.LoadScene("GameScene");
         lives = 3;
+        coinManagerScript.coinTotal = 0;
     }
 }
