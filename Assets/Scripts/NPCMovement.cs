@@ -50,6 +50,10 @@ public class NPCMovement : MonoBehaviour {
     public virtual void OnStomp() {
     }
 
+    public virtual void Die() {
+        Destroy(gameObject);
+    }
+
     public bool IsGoingLeft() {
         return goLeft;
     }

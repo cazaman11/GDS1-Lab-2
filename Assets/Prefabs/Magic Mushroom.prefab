@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 212363091184526554}
   - component: {fileID: 65703732170057164}
   - component: {fileID: 54472182845201698}
-  - component: {fileID: 114725226918809266}
+  - component: {fileID: 114725413275464398}
   m_Layer: 0
   m_Name: Magic Mushroom
   m_TagString: Untagged
@@ -70,7 +70,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.16, y: 0.16, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114725226918809266
+--- !u!114 &114725413275464398
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -78,10 +78,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1753348454213948}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 40a886e03d5ba7341882b1101ab364a3, type: 3}
+  m_Script: {fileID: 11500000, guid: 866eb29ec3a19fe42838fc2635ea9dc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.004
+  speed: 0.003
 --- !u!212 &212363091184526554
 SpriteRenderer:
   m_ObjectHideFlags: 1

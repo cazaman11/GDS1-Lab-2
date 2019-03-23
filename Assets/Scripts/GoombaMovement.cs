@@ -22,6 +22,6 @@ public class GoombaMovement : NPCMovement {
     public override void OnStomp()
     {
         Debug.Log("100");
-        Destroy(gameObject);
+        Die();
     }
 }

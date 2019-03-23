@@ -81,7 +81,21 @@ public class PlayerController : MonoBehaviour {
 
     private void OnCollisionEnter(Collision collision)
     {
-        HasLanded(collision);
+        if (GetDirectionOfCollision(collision) == Vector3.down)
+        {
+            HasLanded(collision);
+        }
+        else {
+            if (collision.transform.tag == "Enemy") {
+                if (currentState != State.Star)
+                {
+                    Shrink();
+                }
+                else {
+                    collision.gameObject.GetComponent<NPCMovement>().Die();
+                }
+            }
+        }
     }
 
     private void OnCollisionExit(Collision collision)
@@ -92,14 +106,13 @@ public class PlayerController : MonoBehaviour {
     private void HasLanded(Collision collision) {
         if (!canJump)
         {
-            if (GetDirectionOfCollision(collision) == Vector3.down) {
-                if (collision.transform.tag != "Enemy")
-                {
-                    canJump = true;
-                }
-                else {
-                    collision.gameObject.GetComponent<NPCMovement>().OnStomp();
-                }
+            if (collision.transform.tag != "Enemy")
+            {
+                canJump = true;
+            }
+            else
+            {
+                collision.gameObject.GetComponent<NPCMovement>().OnStomp();
             }
         }
     }
@@ -134,7 +147,7 @@ public class PlayerController : MonoBehaviour {
     }
 
     public void PickUp(GameObject item) {
-        if (item.name == "MagicMushroom") {
+        if (item.name == "Magic Mushroom") {
             Grow();
         }
     }
@@ -143,11 +156,29 @@ public class PlayerController : MonoBehaviour {
         if (currentState == State.Small)
         {
             currentState = State.Super;
-            transform.position += (Vector3.up * 0.2f);
             transform.localScale += Vector3.up;
         }
         else {
             Debug.Log(100);
         }
+    }
+
+    private void Shrink() {
+        switch (currentState) {
+            case State.Fire:
+                currentState = State.Super;
+                break;
+            case State.Super:
+                currentState = State.Small;
+                transform.localScale -= Vector3.up;
+                break;
+            case State.Small:
+                Die();
+                break;
+        }
+    }
+
+    public void Die() {
+        Debug.Log("GAME OVER!");
     }
 }

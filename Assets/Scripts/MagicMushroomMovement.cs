@@ -18,7 +18,6 @@ public class MagicMushroomMovement : NPCMovement {
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("I");
         SwitchDirection(collision);
     }
 
@@ -27,6 +26,7 @@ public class MagicMushroomMovement : NPCMovement {
         if (collision.transform.tag == "Player")
         {
             collision.gameObject.GetComponent<PlayerController>().PickUp(gameObject);
+            Destroy(gameObject);
         }
         else {
             base.SwitchDirection(collision);
