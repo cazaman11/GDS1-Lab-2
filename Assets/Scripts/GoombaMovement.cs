@@ -2,32 +2,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GoombaMovement : MonoBehaviour {
-
-    private bool goLeft;
-    [SerializeField]
-    private float speed;
+public class GoombaMovement : EnemyMovement {
 
 	// Use this for initialization
 	void Awake () {
-        goLeft = true;
+        SetUp();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        if (goLeft)
-        {
-            transform.position += Vector3.left * speed;
-        }
-        else {
-            transform.position += Vector3.right * speed;
-        }
+        Move();
 	}
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.transform.tag != "Floor") {
-            goLeft = !goLeft;
-        }
+        SwitchDirection(collision.transform.tag);
+    }
+
+    public override void OnStomp()
+    {
+        Debug.Log("100");
+        Destroy(gameObject);
     }
 }

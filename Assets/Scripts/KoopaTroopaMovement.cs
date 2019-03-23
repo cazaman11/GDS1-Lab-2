@@ -2,11 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class KoopaTroopaMovement : MonoBehaviour {
+public class KoopaTroopaMovement : EnemyMovement {
 
-    private bool goLeft;
-    [SerializeField]
-    private float speed;
     [SerializeField]
     private GameObject shell;
     [SerializeField]
@@ -20,57 +17,16 @@ public class KoopaTroopaMovement : MonoBehaviour {
     // Use this for initialization
     void Awake()
     {
-        goLeft = false;
-        Stand();
-        shellSpeed = speed * 2;
-        timeToStand = 5;
-        t = 0;
+        SetUp();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (standing)
-        {
-            if (goLeft)
-            {
-                transform.position += Vector3.left * speed;
-            }
-            else
-            {
-                transform.position += Vector3.right * speed;
-            }
-        }
-        else {
-            if (canShellMove)
-            {
-                if (goLeft)
-                {
-                    transform.position += Vector3.left * shellSpeed;
-                }
-                else
-                {
-                    transform.position += Vector3.right * shellSpeed;
-                }
-            }
-            else {
-                if (t >= 1)
-                {
-                    Stand();
-                    t = 0;
-                }
-                else {
-                    t += Time.deltaTime / timeToStand;
-                }
-            }
-        }
+        Move();
     }
 
-    public void Bump() {
-        goLeft = !goLeft;
-    }
-
-    public void OnStomp() {
+    public override void OnStomp() {
         if (standing)
         {
             standing = false;
@@ -93,5 +49,66 @@ public class KoopaTroopaMovement : MonoBehaviour {
         shell.SetActive(false);
         body.SetActive(true);
         canShellMove = false;
+    }
+
+    public override void SetUp()
+    {
+        base.SetUp();
+        Stand();
+        shellSpeed = GetSpeed() * 2;
+        timeToStand = 5;
+        t = 0;
+    }
+
+    public override void Move()
+    {
+        if (standing)
+        {
+            if (IsGoingLeft())
+            {
+                transform.position += Vector3.left * GetSpeed();
+            }
+            else
+            {
+                transform.position += Vector3.right * GetSpeed();
+            }
+        }
+        else
+        {
+            if (canShellMove)
+            {
+                if (IsGoingLeft())
+                {
+                    transform.position += Vector3.left * shellSpeed;
+                }
+                else
+                {
+                    transform.position += Vector3.right * shellSpeed;
+                }
+            }
+            else
+            {
+                if (t >= 1)
+                {
+                    Stand();
+                    t = 0;
+                }
+                else
+                {
+                    t += Time.deltaTime / timeToStand;
+                }
+            }
+        }
+    }
+
+    public override void SwitchDirection(string tag)
+    {
+        if (tag == "Player")
+        {
+            OnStomp();
+        }
+        else {
+            base.SwitchDirection(tag);
+        }
     }
 }

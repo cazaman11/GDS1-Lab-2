@@ -84,22 +84,52 @@ public class PlayerController : MonoBehaviour {
         HasLanded(collision);
     }
 
+    private void OnCollisionExit(Collision collision)
+    {
+        canJump = false;
+    }
+
     private void HasLanded(Collision collision) {
         if (!canJump)
         {
-            Vector3 direction = (collision.transform.position - transform.position);
-            Ray ray = new Ray(transform.position, direction);
-            RaycastHit raycast;
-            Physics.Raycast(ray, out raycast);
-            if (raycast.collider)
-            {
-                Vector3 normal = raycast.normal;
-                normal = raycast.transform.TransformDirection(normal);
-                if (normal == raycast.transform.up)
+            if (GetDirectionOfCollision(collision) == Vector3.down) {
+                if (collision.transform.tag != "Enemy")
                 {
                     canJump = true;
                 }
+                else {
+                    collision.gameObject.GetComponent<EnemyMovement>().OnStomp();
+                }
             }
         }
+    }
+
+    private Vector3 GetDirectionOfCollision(Collision collision) {
+        Vector3 direction = (collision.transform.position - transform.position);
+        Ray ray = new Ray(transform.position, direction);
+        RaycastHit raycast;
+        Physics.Raycast(ray, out raycast);
+        if (raycast.collider)
+        {
+            Vector3 normal = raycast.normal;
+            normal = raycast.transform.TransformDirection(normal);
+            if (normal == raycast.transform.up)
+            {
+                return Vector3.down;
+            }
+            if (normal == -raycast.transform.up)
+            {
+                return Vector3.up;
+            }
+            if (normal == raycast.transform.right)
+            {
+                return Vector3.left;
+            }
+            if (normal == -raycast.transform.right)
+            {
+                return Vector3.right;
+            }
+        }
+        return Vector3.zero;
     }
 }
