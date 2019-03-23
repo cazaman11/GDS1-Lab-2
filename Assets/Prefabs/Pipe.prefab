@@ -37,7 +37,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4023265589754158}
   - component: {fileID: 212995454950118620}
-  - component: {fileID: 65391621443399698}
   m_Layer: 0
   m_Name: PipeTop
   m_TagString: Untagged
@@ -72,18 +71,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &65391621443399698
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1710765948155868}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.16, y: 0.16, z: 0.2}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!65 &65950279995615106
 BoxCollider:
   m_ObjectHideFlags: 1

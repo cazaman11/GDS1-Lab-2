@@ -64,10 +64,6 @@ public class KoopaTroopaMovement : MonoBehaviour {
                 }
             }
         }
-
-        if (Input.GetKeyDown(KeyCode.Return)) {
-            OnStomp();
-        }
     }
 
     public void Bump() {
