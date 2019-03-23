@@ -103,7 +103,7 @@ public class KoopaTroopaMovement : NPCMovement {
 
     public override void SwitchDirection(Collision collision)
     {
-        if (collision.transform.tag == "Player")
+        if (collision.transform.tag == "Player" && GetDirectionOfCollision(collision) == Vector3.up)
         {
             OnStomp();
         }

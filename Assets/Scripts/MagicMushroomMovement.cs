@@ -8,6 +8,7 @@ public class MagicMushroomMovement : NPCMovement {
     void Awake()
     {
         SetUp();
+        SetDirection(false);
     }
 
     // Update is called once per frame

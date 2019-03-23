@@ -147,7 +147,7 @@ public class PlayerController : MonoBehaviour {
     }
 
     public void PickUp(GameObject item) {
-        if (item.name == "Magic Mushroom") {
+        if (item.tag == "Magic Mushroom") {
             Grow();
         }
     }

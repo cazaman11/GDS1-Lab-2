@@ -26,7 +26,7 @@ public class NPCMovement : MonoBehaviour {
     }
 
     public virtual void SwitchDirection(Collision collision) {
-        if (collision.transform.tag != "Floor")
+        if (GetDirectionOfCollision(collision) == Vector3.right || GetDirectionOfCollision(collision) == Vector3.left)
         {
             goLeft = !goLeft;
         }
@@ -60,5 +60,39 @@ public class NPCMovement : MonoBehaviour {
 
     public float GetSpeed() {
         return speed;
+    }
+
+    public void SetDirection(bool isLeft) {
+        goLeft = isLeft;
+    }
+
+    public Vector3 GetDirectionOfCollision(Collision collision)
+    {
+        Vector3 direction = (collision.transform.position - transform.position);
+        Ray ray = new Ray(transform.position, direction);
+        RaycastHit raycast;
+        Physics.Raycast(ray, out raycast);
+        if (raycast.collider)
+        {
+            Vector3 normal = raycast.normal;
+            normal = raycast.transform.TransformDirection(normal);
+            if (normal == raycast.transform.up)
+            {
+                return Vector3.down;
+            }
+            if (normal == -raycast.transform.up)
+            {
+                return Vector3.up;
+            }
+            if (normal == raycast.transform.right)
+            {
+                return Vector3.left;
+            }
+            if (normal == -raycast.transform.right)
+            {
+                return Vector3.right;
+            }
+        }
+        return Vector3.zero;
     }
 }
