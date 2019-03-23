@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GoombaMovement : EnemyMovement {
+public class GoombaMovement : NPCMovement {
 
 	// Use this for initialization
 	void Awake () {
@@ -16,7 +16,7 @@ public class GoombaMovement : EnemyMovement {
 
     private void OnCollisionEnter(Collision collision)
     {
-        SwitchDirection(collision.transform.tag);
+        SwitchDirection(collision);
     }
 
     public override void OnStomp()

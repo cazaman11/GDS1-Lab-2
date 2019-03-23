@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyMovement : MonoBehaviour {
+public class NPCMovement : MonoBehaviour {
 
     private bool goLeft;
     [SerializeField]
@@ -22,11 +22,11 @@ public class EnemyMovement : MonoBehaviour {
 
     private void OnCollisionEnter(Collision collision)
     {
-        SwitchDirection(collision.transform.tag);
+        SwitchDirection(collision);
     }
 
-    public virtual void SwitchDirection(string tag) {
-        if (tag != "Floor")
+    public virtual void SwitchDirection(Collision collision) {
+        if (collision.transform.tag != "Floor")
         {
             goLeft = !goLeft;
         }

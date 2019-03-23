@@ -8,7 +8,7 @@ public class KoopaBump : MonoBehaviour {
     private void OnCollisionEnter(Collision collision)
     {
         if (GetComponentInParent<KoopaTroopaMovement>()) {
-            GetComponentInParent<KoopaTroopaMovement>().SwitchDirection(collision.transform.tag);
+            GetComponentInParent<KoopaTroopaMovement>().SwitchDirection(collision);
         }
     }
 }

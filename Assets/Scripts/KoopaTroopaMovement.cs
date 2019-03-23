@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class KoopaTroopaMovement : EnemyMovement {
+public class KoopaTroopaMovement : NPCMovement {
 
     [SerializeField]
     private GameObject shell;
@@ -101,14 +101,14 @@ public class KoopaTroopaMovement : EnemyMovement {
         }
     }
 
-    public override void SwitchDirection(string tag)
+    public override void SwitchDirection(Collision collision)
     {
-        if (tag == "Player")
+        if (collision.transform.tag == "Player")
         {
             OnStomp();
         }
         else {
-            base.SwitchDirection(tag);
+            base.SwitchDirection(collision);
         }
     }
 }

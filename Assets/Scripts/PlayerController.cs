@@ -98,7 +98,7 @@ public class PlayerController : MonoBehaviour {
                     canJump = true;
                 }
                 else {
-                    collision.gameObject.GetComponent<EnemyMovement>().OnStomp();
+                    collision.gameObject.GetComponent<NPCMovement>().OnStomp();
                 }
             }
         }
@@ -131,5 +131,23 @@ public class PlayerController : MonoBehaviour {
             }
         }
         return Vector3.zero;
+    }
+
+    public void PickUp(GameObject item) {
+        if (item.name == "MagicMushroom") {
+            Grow();
+        }
+    }
+
+    private void Grow() {
+        if (currentState == State.Small)
+        {
+            currentState = State.Super;
+            transform.position += (Vector3.up * 0.2f);
+            transform.localScale += Vector3.up;
+        }
+        else {
+            Debug.Log(100);
+        }
     }
 }
