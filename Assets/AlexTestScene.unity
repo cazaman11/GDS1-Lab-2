@@ -614,6 +614,12 @@ Prefab:
       value: 
       objectReference: {fileID: 1966808785460544, guid: 0cbb228367adc6744987e353d79ff865,
         type: 2}
+    - target: {fileID: 114932219997572060, guid: e1a1d504c1faa474ba6a6f5cfb4a1ba0,
+        type: 2}
+      propertyPath: mushroom
+      value: 
+      objectReference: {fileID: 1753348454213948, guid: b0b7bc51ad471a24b892e333849c28a9,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e1a1d504c1faa474ba6a6f5cfb4a1ba0, type: 2}
   m_IsPrefabParent: 0

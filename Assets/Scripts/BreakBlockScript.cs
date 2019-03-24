@@ -8,17 +8,22 @@ public class BreakBlockScript : MonoBehaviour {
 
     private void OnCollisionStay(Collision collision)
     {
-        if (collision.gameObject.tag == "Enemy" && hit)
+        if (collision.gameObject.tag == "Enemy" && hit && collision.gameObject.name != "Koopa Troopa Body")
         {
             Debug.Log("Goomba on block");
             collision.gameObject.SetActive(false);
         }
-        else if(collision.gameObject.tag == "Magic Mushroom" && hit|| collision.gameObject.tag == "1Up" && hit)
+        else if(collision.gameObject.tag == "Enemy" && hit && collision.gameObject.name == "Koopa Troopa Body")
         {
-            //collision.gameObject.GetComponent<MagicMushroomMovement>().SwitchDirection(collision);
-            collision.gameObject.GetComponent<MagicMushroomMovement>().SetDirection(true);
+            collision.gameObject.GetComponentInParent<KoopaTroopaMovement>().OnStomp();
+        }
+        else if (collision.gameObject.tag == "Magic Mushroom" && hit|| collision.gameObject.tag == "1Up" && hit)
+        {
+            collision.gameObject.GetComponent<MagicMushroomMovement>().SwitchDirection(collision);
+            //collision.gameObject.GetComponent<MagicMushroomMovement>().SetDirection(true);
             Debug.Log("Is this calling?");
         }
+       
         
     }
 

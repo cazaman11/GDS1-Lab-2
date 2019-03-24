@@ -5,7 +5,18 @@ using UnityEngine;
 public class GoalManager : MonoBehaviour {
     [SerializeField]
     GameObject[] pointBoxes;
+    GameObject flag;
+    Vector3 currentPos;
+    Vector3 bottomPos;
     public bool goalTouch = false;
+    [SerializeField]
+    float time = 5f;
+    private void Start()
+    {
+        flag = GameObject.Find("Flag");
+        currentPos = flag.transform.position;
+        bottomPos = GameObject.Find("FlagEnd").transform.position;
+    }
 
     private void Update()
     {
@@ -15,8 +26,17 @@ public class GoalManager : MonoBehaviour {
             {
                 boxes.GetComponent<BoxCollider>().enabled = false;
             }
-
+            flagMove();
+           // goalTouch = false;
 
         }
+    }
+
+    void flagMove()
+    {
+        float t = Time.deltaTime / time;
+        flag.transform.position = Vector3.Lerp(currentPos, bottomPos, t);
+
+        
     }
 }
