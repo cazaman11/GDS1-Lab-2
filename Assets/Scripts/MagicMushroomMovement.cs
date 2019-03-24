@@ -35,7 +35,7 @@ public class MagicMushroomMovement : NPCMovement {
             gameObject.SetActive(false);
         }
         else {
-            base.SwitchDirection(collision);
+            base.SwitchDirection(collision);           
         }
     }
 

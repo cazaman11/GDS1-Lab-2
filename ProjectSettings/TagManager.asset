@@ -4,9 +4,8 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Enemy
-  - Magic Mushroom
-  - 1Up
+  - Fireball
+  - Fire Flower
   layers:
   - Default
   - TransparentFX

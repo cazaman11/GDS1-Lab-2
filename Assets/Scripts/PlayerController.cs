@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour {
     private Rigidbody rb;
     public enum State { Small, Super, Fire, Star };
     public State currentState;
+    private bool starred = false;
 
     private enum SpeedState { Walk, Run};
     private SpeedState currentSpeedState;
@@ -19,12 +20,21 @@ public class PlayerController : MonoBehaviour {
     private float jumpForce;
     private bool canJump;
 
+    private int maxBalls;
+    private int currentBalls;
+    [SerializeField]
+    private GameObject fireball;
+    private bool facingRight;
+
     // Use this for initialization
     void Awake () {
         rb = GetComponent<Rigidbody>();
         currentState = State.Small;
         currentSpeedState = SpeedState.Walk;
         canJump = false;
+        maxBalls = 2;
+        currentBalls = 0;
+        facingRight = true;
 	}
 	
 	// Update is called once per frame
@@ -32,11 +42,40 @@ public class PlayerController : MonoBehaviour {
         UpdateSpeedState();
         Move();
         Jump();
+        if (currentState == State.Fire) {
+            Shoot();
+        }
+    }
+
+    private void Shoot() {
+        if (Input.GetKeyDown(KeyCode.LeftShift)) {
+            if (currentBalls < maxBalls) {
+                Fireball();
+            }
+        }
+    }
+
+    private void Fireball() {
+        GameObject[] array;
+        Vector3 dir;
+        if (facingRight)
+        {
+            Instantiate(fireball, transform.position + (Vector3.right * 0.3f), Quaternion.identity);
+            dir = Vector3.right;
+        }
+        else {
+            Instantiate(fireball, transform.position + (Vector3.left * 0.3f), Quaternion.identity);
+            dir = Vector3.left;
+        }
+        array = GameObject.FindGameObjectsWithTag("Fireball");
+        array[array.Length - 1].GetComponent<FireballController>().Fire(dir);
+        currentBalls++;
     }
 
     private void Move()
     {
         if (Input.GetKey(KeyCode.LeftArrow)) {
+            facingRight = false;
             if (currentSpeedState == SpeedState.Walk)
             {
                 rb.AddForce(Vector3.left * walkSpeed);
@@ -47,6 +86,7 @@ public class PlayerController : MonoBehaviour {
             }
         }
         if (Input.GetKey(KeyCode.RightArrow)) {
+            facingRight = true;
             if (currentSpeedState == SpeedState.Walk)
             {
                 rb.AddForce(Vector3.right * walkSpeed);
@@ -87,7 +127,7 @@ public class PlayerController : MonoBehaviour {
         }
         else {
             if (collision.transform.tag == "Enemy") {
-                if (currentState != State.Star)
+                if (!starred)
                 {
                     Shrink();
                 }
@@ -150,6 +190,30 @@ public class PlayerController : MonoBehaviour {
         if (item.tag == "Magic Mushroom") {
             Grow();
         }
+        switch (item.tag) {
+            case "Magic Mushroom":
+                Grow();
+                break;
+            case "Fire Flower":
+                Ignite();
+                break;
+            default:break;
+        }
+    }
+
+    private void Ignite() {
+        if (currentState == State.Small)
+        {
+            Grow();
+        }
+        else if (currentState == State.Super)
+        {
+            currentState = State.Fire;
+            GetComponent<SpriteRenderer>().color = Color.green;
+        }
+        else {
+            Debug.Log(1000);
+        }
     }
 
     private void Grow() {
@@ -159,7 +223,7 @@ public class PlayerController : MonoBehaviour {
             transform.localScale += Vector3.up;
         }
         else {
-            Debug.Log(100);
+            Debug.Log(1000);
         }
     }
 
@@ -182,9 +246,19 @@ public class PlayerController : MonoBehaviour {
         Debug.Log("GAME OVER!");
     }
 
+
     public bool getJump()
     {
         return canJump;
+    }
+
+
+    public bool IsSmall() {
+        return currentState == State.Small;
+    }
+
+    public void fireballHit() {
+        currentBalls--;
     }
 
 }
