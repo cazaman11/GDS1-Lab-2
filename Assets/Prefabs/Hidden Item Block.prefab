@@ -9,86 +9,70 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1570698356649378}
+  m_RootGameObject: {fileID: 1917363405321790}
   m_IsPrefabParent: 1
---- !u!1 &1570698356649378
+--- !u!1 &1917363405321790
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4206437995104620}
-  - component: {fileID: 212795990377040190}
-  - component: {fileID: 65893966016465490}
-  - component: {fileID: 54135232510955780}
-  - component: {fileID: 114251769876473998}
+  - component: {fileID: 4665457375375738}
+  - component: {fileID: 212496039465792018}
+  - component: {fileID: 65890416567780506}
+  - component: {fileID: 114490529520095890}
   m_Layer: 0
-  m_Name: Goomba
-  m_TagString: Enemy
+  m_Name: Hidden Item Block
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4206437995104620
+--- !u!4 &4665457375375738
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1570698356649378}
+  m_GameObject: {fileID: 1917363405321790}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.959, y: 2.618, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!54 &54135232510955780
-Rigidbody:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1570698356649378}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 120
-  m_CollisionDetection: 0
---- !u!65 &65893966016465490
+--- !u!65 &65890416567780506
 BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1570698356649378}
+  m_GameObject: {fileID: 1917363405321790}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.16, y: 0.16, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114251769876473998
+--- !u!114 &114490529520095890
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1570698356649378}
+  m_GameObject: {fileID: 1917363405321790}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 213bb004cda03e94dbfb937cc889ff73, type: 3}
+  m_Script: {fileID: 11500000, guid: edc400b60bdf2254780f5aa9f3466905, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.003
---- !u!212 &212795990377040190
+  item: {fileID: 1966808785460544, guid: 0cbb228367adc6744987e353d79ff865, type: 2}
+--- !u!212 &212496039465792018
 SpriteRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1570698356649378}
-  m_Enabled: 1
+  m_GameObject: {fileID: 1917363405321790}
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -117,7 +101,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Color: {r: 0.7264151, g: 0.2509226, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

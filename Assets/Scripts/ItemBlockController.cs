@@ -36,6 +36,10 @@ public class ItemBlockController : MonoBehaviour {
                 {
                     SummonItem();
                 }
+                if(gameObject.name == "Hidden Item Block")
+                {
+                    gameObject.GetComponent<SpriteRenderer>().enabled = true;
+                }
             }
         }
     }

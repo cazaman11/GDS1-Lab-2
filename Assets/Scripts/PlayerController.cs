@@ -5,8 +5,8 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour {
 
     private Rigidbody rb;
-    private enum State { Small, Super, Fire, Star };
-    private State currentState;
+    public enum State { Small, Super, Fire, Star };
+    public State currentState;
 
     private enum SpeedState { Walk, Run};
     private SpeedState currentSpeedState;
@@ -181,4 +181,10 @@ public class PlayerController : MonoBehaviour {
     public void Die() {
         Debug.Log("GAME OVER!");
     }
+
+    public bool getJump()
+    {
+        return canJump;
+    }
+
 }

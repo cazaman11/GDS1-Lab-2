@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Enemy
   - Magic Mushroom
+  - 1Up
   layers:
   - Default
   - TransparentFX

@@ -12,7 +12,7 @@ public class CameraScript : MonoBehaviour {
 	void Start () {
         thisCamera = gameObject.GetComponent<Camera>();
         cameraTransform = gameObject.transform;
-        mario = GameObject.Find("Player");
+        mario = GameObject.Find("Mario");
         // distance = cameraTransform.position - mario.transform.position;
         distance.x = mario.transform.position.x;
         distance.y = cameraTransform.position.y;

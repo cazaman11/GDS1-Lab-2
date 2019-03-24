@@ -81,6 +81,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6d475128fe6a764eb43e97db816c9f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentState: 0
   walkSpeed: 20
   runMulti: 1.5
   jumpForce: 4
@@ -97,7 +98,6 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
