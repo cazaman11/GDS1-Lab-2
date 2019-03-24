@@ -49,7 +49,7 @@ BoxCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1917363405321790}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.16, y: 0.16, z: 0.2}
@@ -65,7 +65,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edc400b60bdf2254780f5aa9f3466905, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item: {fileID: 1966808785460544, guid: 0cbb228367adc6744987e353d79ff865, type: 2}
+  mushroom: {fileID: 0}
+  flower: {fileID: 0}
 --- !u!212 &212496039465792018
 SpriteRenderer:
   m_ObjectHideFlags: 1
