@@ -30,7 +30,7 @@ public class MagicMushroomMovement : NPCMovement {
             Destroy(gameObject);
         }
         else {
-            base.SwitchDirection(collision);
+            base.SwitchDirection(collision);           
         }
     }
 }

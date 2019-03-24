@@ -5,26 +5,14 @@ using UnityEngine;
 public class ItemBlockController : MonoBehaviour {
 
     [SerializeField]
-    private GameObject item;
+    private GameObject mushroom;
+    [SerializeField]
+    private GameObject flower;
     private bool isEmpty;
-    private Vector3 startPos;
-    private Vector3 endPos;
-    private float timeTaken;
-    private float t;
 
     private void Awake()
     {
-        if (!item)
-        {
-            isEmpty = true;
-        }
-        else {
-            isEmpty = false;
-        }
-        startPos = transform.position;
-        endPos = startPos + (Vector3.up * 0.05f);
-        timeTaken = 2.5f;
-        t = 0;
+        isEmpty = false;
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -34,7 +22,13 @@ public class ItemBlockController : MonoBehaviour {
             {
                 if (collision.transform.tag == "Player")
                 {
-                    SummonItem();
+                    if (collision.transform.GetComponent<PlayerController>().IsSmall())
+                    {
+                        SummonItem(mushroom);
+                    }
+                    else {
+                        SummonItem(flower);
+                    }
                 }
             }
         }
@@ -55,18 +49,8 @@ public class ItemBlockController : MonoBehaviour {
         return false;
     }
 
-    private void SummonItem() {
-        StartCoroutine(Boop(transform.position, endPos, timeTaken, 0));
+    private void SummonItem(GameObject item) {
         Instantiate(item, transform.position + (Vector3.up * 0.2f), Quaternion.identity);
         isEmpty = true;
-        t = 0;
-        StartCoroutine(Boop(transform.position, startPos, timeTaken, 3));
-    }
-
-    private IEnumerator Boop(Vector3 start, Vector3 end, float time, float delay) {
-        yield return new WaitForSeconds(delay);
-        t += Time.deltaTime / time;
-        transform.position = Vector3.Lerp(start, end, t);
-        yield return null;
     }
 }

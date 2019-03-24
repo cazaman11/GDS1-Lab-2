@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Enemy
   - Magic Mushroom
+  - Fire Flower
+  - Star
+  - Fireball
   layers:
   - Default
   - TransparentFX
