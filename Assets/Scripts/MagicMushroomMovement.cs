@@ -24,15 +24,10 @@ public class MagicMushroomMovement : NPCMovement {
 
     public override void SwitchDirection(Collision collision)
     {
-        if (collision.transform.tag == "Player" && gameObject.tag == "Magic Mushroom")
+        if (collision.transform.tag == "Player")
         {
             collision.gameObject.GetComponent<PlayerController>().PickUp(gameObject);
             Destroy(gameObject);
-        }
-        else if(collision.transform.tag == "Player" && gameObject.tag == "1Up")
-        {
-            GameObject.Find("GameManager").GetComponent<LivesScript>().OneUp();
-            gameObject.SetActive(false);
         }
         else {
             base.SwitchDirection(collision);           
