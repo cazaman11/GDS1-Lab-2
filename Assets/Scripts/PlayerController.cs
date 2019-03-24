@@ -8,8 +8,6 @@ public class PlayerController : MonoBehaviour {
     public enum State { Small, Super, Fire, Star };
     public State currentState;
     private bool canMove;
-    [SerializeField]
-    private LivesScript ls;
 
     private bool starred = false;
     private float starTime;
@@ -49,7 +47,7 @@ public class PlayerController : MonoBehaviour {
         invincible = false;
         starTime = 30;
         canMove = true;
-        ls = GameObject.FindGameObjectWithTag("GameController").GetComponent<LivesScript>();
+        
 	}
 	
 	// Update is called once per frame
@@ -232,6 +230,9 @@ public class PlayerController : MonoBehaviour {
     }
 
     public void PickUp(GameObject item) {
+        if (item.tag == "Magic Mushroom") {
+            Grow();
+        }
         switch (item.tag) {
             case "Magic Mushroom":
                 Grow();
@@ -241,9 +242,6 @@ public class PlayerController : MonoBehaviour {
                 break;
             case "Star":
                 SuperStar();
-                break;
-            case "1Up":
-                ls.OneUp();
                 break;
             default:break;
         }
