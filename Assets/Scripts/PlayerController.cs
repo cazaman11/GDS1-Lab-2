@@ -7,7 +7,13 @@ public class PlayerController : MonoBehaviour {
     private Rigidbody rb;
     private enum State { Small, Super, Fire};
     private State currentState;
+    private bool canMove;
     private bool starred = false;
+    private float starTime;
+
+    private bool invincible;
+    private float timeInvincibile;
+    private float t;
 
     private enum SpeedState { Walk, Run};
     private SpeedState currentSpeedState;
@@ -35,15 +41,47 @@ public class PlayerController : MonoBehaviour {
         maxBalls = 2;
         currentBalls = 0;
         facingRight = true;
+        t = 0;
+        timeInvincibile = 2;
+        invincible = false;
+        starTime = 30;
+        canMove = true;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        UpdateSpeedState();
-        Move();
-        Jump();
-        if (currentState == State.Fire) {
-            Shoot();
+        if (canMove) {
+            UpdateSpeedState();
+            Move();
+            Jump();
+            if (currentState == State.Fire)
+            {
+                Shoot();
+            }
+            if (invincible && !starred)
+            {
+                if (t <= 1)
+                {
+                    t += Time.deltaTime / timeInvincibile;
+                }
+                else
+                {
+                    invincible = false;
+                    t = 0;
+                }
+            }
+            else if (invincible && starred) {
+                if (t <= 1)
+                {
+                    t += Time.deltaTime / starTime;
+                }
+                else
+                {
+                    invincible = false;
+                    starred = false;
+                    t = 0;
+                }
+            }
         }
     }
 
@@ -127,12 +165,13 @@ public class PlayerController : MonoBehaviour {
         }
         else {
             if (collision.transform.tag == "Enemy") {
-                if (!starred)
-                {
+                if (!invincible) {
                     Shrink();
                 }
                 else {
-                    collision.gameObject.GetComponent<NPCMovement>().Die();
+                    if (starred) {
+                        collision.gameObject.GetComponent<NPCMovement>().Die();
+                    }
                 }
             }
         }
@@ -140,7 +179,9 @@ public class PlayerController : MonoBehaviour {
 
     private void OnCollisionExit(Collision collision)
     {
-        canJump = false;
+        if (GetDirectionOfCollision(collision) == Vector3.down) {
+            canJump = false;
+        }
     }
 
     private void HasLanded(Collision collision) {
@@ -197,8 +238,18 @@ public class PlayerController : MonoBehaviour {
             case "Fire Flower":
                 Ignite();
                 break;
+            case "Star":
+                SuperStar();
+                break;
             default:break;
         }
+    }
+
+    private void SuperStar()
+    {
+        invincible = true;
+        starred = true;
+        t = 0;
     }
 
     private void Ignite() {
@@ -231,10 +282,13 @@ public class PlayerController : MonoBehaviour {
         switch (currentState) {
             case State.Fire:
                 currentState = State.Super;
+                GetComponent<SpriteRenderer>().color = Color.red;
+                OnHit();
                 break;
             case State.Super:
                 currentState = State.Small;
                 transform.localScale -= Vector3.up;
+                OnHit();
                 break;
             case State.Small:
                 Die();
@@ -242,8 +296,15 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
+    private void OnHit()
+    {
+        invincible = true;
+        t = 0;
+    }
+
     public void Die() {
         Debug.Log("GAME OVER!");
+        canMove = false;
     }
 
     public bool IsSmall() {
