@@ -46,6 +46,7 @@ public class PlayerController : MonoBehaviour {
         invincible = false;
         starTime = 30;
         canMove = true;
+        
 	}
 	
 	// Update is called once per frame
