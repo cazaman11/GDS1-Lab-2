@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4665457375375738}
   - component: {fileID: 212496039465792018}
   - component: {fileID: 65890416567780506}
-  - component: {fileID: 114490529520095890}
+  - component: {fileID: 114786669097812102}
   m_Layer: 0
   m_Name: Hidden Item Block
   m_TagString: Untagged
@@ -54,7 +54,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.16, y: 0.16, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114490529520095890
+--- !u!114 &114786669097812102
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -62,11 +62,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1917363405321790}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: edc400b60bdf2254780f5aa9f3466905, type: 3}
+  m_Script: {fileID: 11500000, guid: 2413381cdc12fd145878066f7a4f8a2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mushroom: {fileID: 0}
-  flower: {fileID: 0}
+  item: {fileID: 1966808785460544, guid: 0cbb228367adc6744987e353d79ff865, type: 2}
+  isHidden: 1
+  normalSprite: {fileID: 21300000, guid: e9ca9d2dfc1225d43b72c03e7669ae34, type: 3}
+  emptySprite: {fileID: 21300000, guid: ef66cc3da358d3b4e9c4e36bdc99a147, type: 3}
 --- !u!212 &212496039465792018
 SpriteRenderer:
   m_ObjectHideFlags: 1

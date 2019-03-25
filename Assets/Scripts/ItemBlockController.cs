@@ -9,10 +9,21 @@ public class ItemBlockController : MonoBehaviour {
     [SerializeField]
     private GameObject flower;
     private bool isEmpty;
+    [SerializeField]
+    private Sprite normalSprite;
+    [SerializeField]
+    private Sprite emptySprite;
 
     private void Awake()
     {
+
+        Restart();
+    }
+
+    private void Restart()
+    {
         isEmpty = false;
+        GetComponent<SpriteRenderer>().sprite = normalSprite;
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -62,6 +73,12 @@ public class ItemBlockController : MonoBehaviour {
 
     private void SummonItem(GameObject item) {
         Instantiate(item, transform.position + (Vector3.up * 0.2f), Quaternion.identity);
+        Empty();
+
+    }
+
+    private void Empty() {
         isEmpty = true;
+        GetComponent<SpriteRenderer>().sprite = emptySprite;
     }
 }
