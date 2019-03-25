@@ -27,8 +27,8 @@ public class GoalManager : MonoBehaviour {
                 boxes.GetComponent<BoxCollider>().enabled = false;
             }
             flagMove();
-           // goalTouch = false;
-
+            // goalTouch = false;
+            GameObject.Find("Time").GetComponent<TimerScript>().timeScore();
         }
     }
 

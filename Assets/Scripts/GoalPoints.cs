@@ -33,6 +33,7 @@ public class GoalPoints : MonoBehaviour {
                 GameObject.Find("GameManager").GetComponent<LivesScript>().OneUp();
             }
             // call score to add points
+            GameObject.Find("GameManager").GetComponent<ScoreManager>().AddPoints(points);
             GameObject.Find("Goal").GetComponent<GoalManager>().goalTouch = true;
         }
     }

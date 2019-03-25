@@ -51,6 +51,7 @@ public class BreakBlockScript : MonoBehaviour {
 
     private void Break()
     {
+        GameObject.Find("GameManager").GetComponent<ScoreManager>().AddPoints(50);
         gameObject.SetActive(false);
     }
 }
