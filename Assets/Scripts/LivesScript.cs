@@ -15,15 +15,19 @@ public class LivesScript : MonoBehaviour {
     GameObject deathScreen;
     GameObject gameOverScreen;
     TimerScript timer;
+    ScoreManager scoreManager;
     // Use this for initialization
     void Start () {
         coinManagerScript = gameObject.GetComponent<CoinManager>();
         coinTotal = coinManagerScript.coinTotal;
+
         deathScreen = GameObject.Find("DeathScreen");
         gameOverScreen = GameObject.Find("GameOverScreen");
-        timer = GameObject.Find("Time").GetComponent<TimerScript>();
         deathScreen.SetActive(false);
         gameOverScreen.SetActive(false);
+
+        timer = GameObject.Find("Time").GetComponent<TimerScript>();
+        scoreManager = gameObject.GetComponent<ScoreManager>();
     }
 	
 	// Update is called once per frame
@@ -71,6 +75,7 @@ public class LivesScript : MonoBehaviour {
         gameOverScreen.SetActive(true);
         lives = 3;
         coinManagerScript.coinTotal = 0;
+        scoreManager.ResetScore();
         timer.pause = true;
         Invoke("ReloadLevel", 3);
     }
