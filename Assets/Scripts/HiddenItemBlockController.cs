@@ -9,15 +9,26 @@ public class HiddenItemBlockController : MonoBehaviour {
     private bool isEmpty;
     [SerializeField]
     private bool isHidden;
+    [SerializeField]
+    private Sprite normalSprite;
+    [SerializeField]
+    private Sprite emptySprite;
 
     private void Awake()
     {
+        Restart();
+    }
+
+    private void Restart()
+    {
         isEmpty = false;
+        GetComponent<SpriteRenderer>().sprite = normalSprite;
         if (isHidden)
         {
             gameObject.GetComponent<SpriteRenderer>().enabled = false;
         }
-        else {
+        else
+        {
             gameObject.GetComponent<SpriteRenderer>().enabled = true;
         }
     }
@@ -55,6 +66,12 @@ public class HiddenItemBlockController : MonoBehaviour {
     private void SummonItem(GameObject item)
     {
         Instantiate(item, transform.position + (Vector3.up * 0.2f), Quaternion.identity);
+        Empty();
+    }
+
+    private void Empty()
+    {
         isEmpty = true;
+        GetComponent<SpriteRenderer>().sprite = emptySprite;
     }
 }

@@ -9,90 +9,56 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1330032301424192}
+  m_RootGameObject: {fileID: 1909591904459912}
   m_IsPrefabParent: 1
---- !u!1 &1330032301424192
+--- !u!1 &1909591904459912
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4459645979913592}
-  - component: {fileID: 212851893414066858}
-  - component: {fileID: 114863786619677502}
-  - component: {fileID: 54101799983165310}
-  - component: {fileID: 65179898400973188}
+  - component: {fileID: 4909706348145432}
+  - component: {fileID: 212873081772234842}
+  - component: {fileID: 65934562815775382}
   m_Layer: 0
-  m_Name: Mario
-  m_TagString: Player
+  m_Name: SmallPipe
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4459645979913592
+--- !u!4 &4909706348145432
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1330032301424192}
+  m_GameObject: {fileID: 1909591904459912}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.901, z: 0}
+  m_LocalPosition: {x: 0.576, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!54 &54101799983165310
-Rigidbody:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1330032301424192}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 120
-  m_CollisionDetection: 0
---- !u!65 &65179898400973188
+--- !u!65 &65934562815775382
 BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1330032301424192}
+  m_GameObject: {fileID: 1909591904459912}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.16, y: 0.16, z: 0.2}
+  m_Size: {x: 0.3147757, y: 0.31477562, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114863786619677502
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1330032301424192}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c6d475128fe6a764eb43e97db816c9f9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentState: 0
-  ls: {fileID: 0}
-  walkSpeed: 20
-  runMulti: 1.5
-  jumpForce: 4
-  fireball: {fileID: 0}
---- !u!212 &212851893414066858
+--- !u!212 &212873081772234842
 SpriteRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1330032301424192}
+  m_GameObject: {fileID: 1909591904459912}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -122,7 +88,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 3694634022121a54e9ca720d593a0e4b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b472b64096d21104bab673ccd683a56f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

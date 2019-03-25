@@ -307,7 +307,6 @@ public class PlayerController : MonoBehaviour {
     }
 
     public void Die() {
-        Debug.Log("GAME OVER!");
         canMove = false;
     }
 
