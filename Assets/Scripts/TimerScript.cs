@@ -12,12 +12,12 @@ public class TimerScript : MonoBehaviour {
     private ScoreManager scoreManager;
     [SerializeField]
     private Text timeText;
-    bool pause = false;
+    public bool pause;
 	// Use this for initialization
 	void Start () {
         lives = GameObject.Find("GameManager").GetComponent<LivesScript>();
         scoreManager = GameObject.Find("GameManager").GetComponent<ScoreManager>();
-
+        pause = true;
     }
 	
 	// Update is called once per frame
@@ -41,5 +41,10 @@ public class TimerScript : MonoBehaviour {
         pause = true;
         scoreManager.AddPoints(inGameTime * 50);
         inGameTime = 0;
+    }
+
+    public void timeReset()
+    {
+        inGameTime = 400;
     }
 }

@@ -2,18 +2,29 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class LivesScript : MonoBehaviour {
 
     public int lives = 3;
-    int coinTotal; //Make this link to coin script
+    int coinTotal;
     CoinManager coinManagerScript ;
     bool checkpointPassed = false; //Add checkpoint object to flag if passed
-	// Use this for initialization
-	void Start () {
+    [SerializeField]
+    Text livesText;
+    GameObject deathScreen;
+    GameObject gameOverScreen;
+    TimerScript timer;
+    // Use this for initialization
+    void Start () {
         coinManagerScript = gameObject.GetComponent<CoinManager>();
         coinTotal = coinManagerScript.coinTotal;
-	}
+        deathScreen = GameObject.Find("DeathScreen");
+        gameOverScreen = GameObject.Find("GameOverScreen");
+        timer = GameObject.Find("Time").GetComponent<TimerScript>();
+        deathScreen.SetActive(false);
+        gameOverScreen.SetActive(false);
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -48,13 +59,29 @@ public class LivesScript : MonoBehaviour {
         // Move mario to world spawn or checkpoint
         // Move camera there
         // Might make separate scenes for easy loading of objects
-        SceneManager.LoadScene("GameScene");
+        livesText.text = lives.ToString();
+        deathScreen.SetActive(true);
+        timer.pause = true;
+        Invoke("ReloadLevel", 3);
     }
 
     void GameOver()
     {
-        SceneManager.LoadScene("GameScene");
+        //SceneManager.LoadScene("GameScene");
+        gameOverScreen.SetActive(true);
         lives = 3;
         coinManagerScript.coinTotal = 0;
+        timer.pause = true;
+        Invoke("ReloadLevel", 3);
+    }
+
+    void ReloadLevel()
+    {
+        
+        deathScreen.SetActive(false);
+        gameOverScreen.SetActive(false);
+        SceneManager.LoadScene("GameScene");
+        timer.timeReset();
+        timer.pause = false;
     }
 }
