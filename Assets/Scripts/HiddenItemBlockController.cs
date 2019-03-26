@@ -37,7 +37,7 @@ public class HiddenItemBlockController : MonoBehaviour {
     {
         if (!isEmpty)
         {
-            if (IsCollisionBelow(collision))
+            if (IsCollisionBelow(collision.collider))
             {
                 if (collision.transform.tag == "Player")
                 {
@@ -48,7 +48,17 @@ public class HiddenItemBlockController : MonoBehaviour {
         }
     }
 
-    private bool IsCollisionBelow(Collision collision)
+    private void OnTriggerEnter(Collider other)
+    {
+        if (IsCollisionBelow(other))
+        {
+            gameObject.GetComponent<SpriteRenderer>().enabled = true;
+            gameObject.GetComponent<BoxCollider>().isTrigger = false;
+        }
+
+    }
+
+    private bool IsCollisionBelow(Collider collision)
     {
         Vector3 direction = (collision.transform.position - transform.position);
         Ray ray = new Ray(transform.position, direction);

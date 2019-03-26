@@ -26,7 +26,7 @@ public class MagicMushroomMovement : NPCMovement {
     {
         if (collision.transform.tag == "Player")
         {
-            collision.gameObject.GetComponent<PlayerController>().PickUp(gameObject);
+            collision.gameObject.GetComponent<PlayerController>().PickUp(gameObject);           
             Destroy(gameObject);
         }
         else {

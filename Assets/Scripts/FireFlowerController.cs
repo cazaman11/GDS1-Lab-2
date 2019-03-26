@@ -8,6 +8,7 @@ public class FireFlowerController : MonoBehaviour {
     {
         if (collision.transform.tag == "Player") {
             collision.gameObject.GetComponent<PlayerController>().PickUp(gameObject);
+            GameObject.Find("GameManager").GetComponent<ScoreManager>().AddPoints(1000);
             Destroy(gameObject);
         }
     }

@@ -51,6 +51,7 @@ public class NPCMovement : MonoBehaviour {
     }
 
     public virtual void Die() {
+        GameObject.Find("GameManager").GetComponent<ScoreManager>().AddPoints(100);
         Destroy(gameObject);
     }
 

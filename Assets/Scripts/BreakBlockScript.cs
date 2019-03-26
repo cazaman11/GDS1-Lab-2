@@ -10,8 +10,9 @@ public class BreakBlockScript : MonoBehaviour {
     {
         if (collision.gameObject.tag == "Enemy" && hit && collision.gameObject.name != "Koopa Troopa Body")
         {
-            Debug.Log("Goomba on block");
-            collision.gameObject.SetActive(false);
+            //Debug.Log("Goomba on block");
+            //collision.gameObject.SetActive(false);
+            collision.gameObject.GetComponent<NPCMovement>().Die();
         }
         else if(collision.gameObject.tag == "Enemy" && hit && collision.gameObject.name == "Koopa Troopa Body")
         {

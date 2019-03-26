@@ -232,6 +232,7 @@ public class PlayerController : MonoBehaviour {
     }
 
     public void PickUp(GameObject item) {
+        GameObject.Find("GameManager").GetComponent<ScoreManager>().AddPoints(1000);
         switch (item.tag) {
             case "Magic Mushroom":
                 Grow();
@@ -244,6 +245,7 @@ public class PlayerController : MonoBehaviour {
                 break;
             case "1Up":
                 ls.OneUp();
+                GameObject.Find("GameManager").GetComponent<ScoreManager>().AddPoints(-1000);
                 break;
             default:break;
         }

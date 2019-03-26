@@ -32,8 +32,10 @@ public class KoopaTroopaMovement : NPCMovement {
             standing = false;
             shell.SetActive(true);
             body.SetActive(false);
+            GameObject.Find("GameManager").GetComponent<ScoreManager>().AddPoints(100);
         }
         else {
+            GameObject.Find("GameManager").GetComponent<ScoreManager>().AddPoints(400);
             if (canShellMove)
             {
                 canShellMove = false;

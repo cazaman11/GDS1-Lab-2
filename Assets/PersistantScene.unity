@@ -785,6 +785,10 @@ Prefab:
       propertyPath: coinText
       value: 
       objectReference: {fileID: 41701807}
+    - target: {fileID: 1387249236572808, guid: ba62cf4467f90fe44a50f0e76161784b, type: 2}
+      propertyPath: m_TagString
+      value: GameController
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ba62cf4467f90fe44a50f0e76161784b, type: 2}
   m_IsPrefabParent: 0
